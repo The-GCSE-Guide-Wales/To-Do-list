@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>To Do</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- iPhone app support -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <h1>Jobs</h1>
+
+    <div class="input-area">
+      <input type="text" id="taskInput" placeholder="Add a job...">
+      <button onclick="addTask()">+</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
