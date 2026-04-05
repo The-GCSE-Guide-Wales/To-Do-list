@@ -1,21 +1,19 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-
   background: #A7AD89;
-Color: 2f2f2f;
- }
+  color: #2f2f2f;
+}
 
 .app {
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.25);
   min-height: 100vh;
   padding: 20px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(15px);
 }
 
 h1 {
   text-align: center;
-  font-weight: 600;
 }
 
 .input-area {
@@ -47,7 +45,6 @@ ul {
 }
 
 li {
-  background: rgba(255,255,255,0.1);
   margin-bottom: 10px;
   padding: 15px;
   border-radius: 12px;
@@ -56,20 +53,20 @@ li {
   align-items: center;
 }
 
-select {
-  border-radius: 8px;
-  padding: 5px;
-}
-
 /* Status colours */
 .completed {
   border-left: 6px solid #34c759;
-  background: rgba(52, 199, 89, 0.15);
+  background: rgba(52, 199, 89, 0.2);
 }
 
 .progress {
   border-left: 6px solid #ff9f0a;
-  background: rgba(255, 159, 10, 0.15);
+  background: rgba(255, 159, 10, 0.2);
+}
+
+.not-started {
+  border-left: 6px solid #ff3b30;
+  background: rgba(255, 59, 48, 0.2);
 }
 
 .completed span {
@@ -77,7 +74,7 @@ select {
   opacity: 0.7;
 }
 
-.not-started {
-  border-left: 6px solid #ff3b30;
-  background: rgba(255, 59, 48, 0.15);
+select {
+  border-radius: 8px;
+  padding: 5px;
 }
