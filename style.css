@@ -60,3 +60,19 @@ select {
   border-radius: 8px;
   padding: 5px;
 }
+
+/* Status colours */
+.completed {
+  border-left: 6px solid #34c759;
+  background: rgba(52, 199, 89, 0.15);
+}
+
+.progress {
+  border-left: 6px solid #ff9f0a;
+  background: rgba(255, 159, 10, 0.15);
+}
+
+.not-started {
+  border-left: 6px solid #ff3b30;
+  background: rgba(255, 59, 48, 0.15);
+}
