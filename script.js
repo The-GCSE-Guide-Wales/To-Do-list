@@ -67,6 +67,8 @@ function addTask() {
   renderTasks();
 }
 
+document.getElementById("addBtn").addEventListener("click", addTask);
+
 function updateStatus(index, status) {
   tasks[index].status = status;
   saveTasks();
