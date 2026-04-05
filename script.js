@@ -13,14 +13,14 @@ function renderTasks() {
 
     let statusClass = "";
     if (task.status === "Completed") statusClass = "completed";
-    if (task.status === "In Progress") statusClass = "progress";
-    if (task.status === "Not Started") statusClass = "not-started";
+    else if (task.status === "In Progress") statusClass = "progress";
+    else statusClass = "not-started";
 
     li.className = statusClass;
 
     li.innerHTML = `
       <span>${task.text}</span>
-      <select onchange="updateStatus(${index}, this.value)">
+      <select data-index="${index}">
         <option ${task.status === "Not Started" ? "selected" : ""}>Not Started</option>
         <option ${task.status === "In Progress" ? "selected" : ""}>In Progress</option>
         <option ${task.status === "Completed" ? "selected" : ""}>Completed</option>
@@ -29,28 +29,23 @@ function renderTasks() {
 
     list.appendChild(li);
   });
-}
 
-  tasks.forEach((task, index) => {
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-      <span>${task.text}</span>
-      <select onchange="updateStatus(${index}, this.value)">
-        <option ${task.status === "Not Started" ? "selected" : ""}>Not Started</option>
-        <option ${task.status === "In Progress" ? "selected" : ""}>In Progress</option>
-        <option ${task.status === "Completed" ? "selected" : ""}>Completed</option>
-      </select>
-    `;
-
-    list.appendChild(li);
+  // Add event listeners to dropdowns
+  document.querySelectorAll("select").forEach(select => {
+    select.addEventListener("change", (e) => {
+      const index = e.target.getAttribute("data-index");
+      tasks[index].status = e.target.value;
+      saveTasks();
+      renderTasks();
+    });
   });
 }
 
-function addTask() {
+// Add task
+document.getElementById("addBtn").addEventListener("click", () => {
   const input = document.getElementById("taskInput");
 
-  if (!input || input.value.trim() === "") return;
+  if (input.value.trim() === "") return;
 
   tasks.push({
     text: input.value,
@@ -60,18 +55,13 @@ function addTask() {
   input.value = "";
   saveTasks();
   renderTasks();
-}
+});
 
-  input.value = "";
-  saveTasks();
-  renderTasks();
-}
-
-document.getElementById("addBtn").addEventListener("click", addTask);
-
-function updateStatus(index, status) {
-  tasks[index].status = status;
-  saveTasks();
-}
+// Press Enter to add
+document.getElementById("taskInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    document.getElementById("addBtn").click();
+  }
+});
 
 renderTasks();
