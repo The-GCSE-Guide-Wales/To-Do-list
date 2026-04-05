@@ -50,12 +50,17 @@ function renderTasks() {
 function addTask() {
   const input = document.getElementById("taskInput");
 
-  if (input.value.trim() === "") return;
+  if (!input || input.value.trim() === "") return;
 
   tasks.push({
     text: input.value,
     status: "Not Started"
   });
+
+  input.value = "";
+  saveTasks();
+  renderTasks();
+}
 
   input.value = "";
   saveTasks();
