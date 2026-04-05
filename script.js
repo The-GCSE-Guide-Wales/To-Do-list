@@ -11,6 +11,29 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
 
+    let statusClass = "";
+    if (task.status === "Completed") statusClass = "completed";
+    if (task.status === "In Progress") statusClass = "progress";
+    if (task.status === "Not Started") statusClass = "not-started";
+
+    li.className = statusClass;
+
+    li.innerHTML = `
+      <span>${task.text}</span>
+      <select onchange="updateStatus(${index}, this.value)">
+        <option ${task.status === "Not Started" ? "selected" : ""}>Not Started</option>
+        <option ${task.status === "In Progress" ? "selected" : ""}>In Progress</option>
+        <option ${task.status === "Completed" ? "selected" : ""}>Completed</option>
+      </select>
+    `;
+
+    list.appendChild(li);
+  });
+}
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement("li");
+
     li.innerHTML = `
       <span>${task.text}</span>
       <select onchange="updateStatus(${index}, this.value)">
